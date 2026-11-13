@@ -1,0 +1,477 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
+<title>Baba James Sports and Gym Store</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Gym equipment, sportswear and football boots. Tap any item to order on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Big+Shoulders+Display:wght@800;900&display=swap">
+<style>
+/* Layout: sticky bar, full-width hero with one 3D dumbbell behind a huge kinetic headline, lime marquee, three category doors, filterable product grid with tilt cards, TikTok-to-WhatsApp path, footer. Black, one lime accent, WhatsApp green only on order buttons. */
+:root {
+  --ink: #0a0a0a;
+  --coal: #141414;
+  --line: #2a2a2a;
+  --bone: #f5f5f5;
+  --ash: #9a9a9a;
+  --red: #e10600;
+  --red-hi: #ff3b30;
+  --wa: #25d366;
+  --wa-ink: #04210f;
+  --panel: #f3f3f1;
+  --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { overflow-x: hidden; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  overflow-x: hidden;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--ink); }
+img { max-width: 100%; display: block; }
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--red-hi); outline-offset: 3px; }
+.wrap { max-width: 1240px; margin: 0 auto; }
+
+/* nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; margin: 0 -16px; padding: 10px 16px; background: rgba(10,10,10,.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.nav-in { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { font-family: var(--display); font-weight: 900; font-size: 1.35rem; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; line-height: 1; min-width: 0; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.logo { height: 38px; width: auto; border-radius: 3px; background: #fff; flex: none; }
+.brand small { display: block; font-family: var(--body); font-weight: 500; font-size: .66rem; letter-spacing: .14em; color: var(--ash); margin-top: 3px; }
+
+/* buttons */
+.wa-btn { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; background: var(--wa); color: var(--wa-ink); font-weight: 700; text-decoration: none; border: 0; border-radius: 999px; padding: .85rem 1.4rem; font-size: 1rem; white-space: nowrap; }
+.wa-btn svg { width: 1.2em; height: 1.2em; flex: none; }
+.wa-btn.sm { padding: .55rem 1rem; font-size: .88rem; }
+.wa-btn.pulse { animation: pulse 2.2s ease-out infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,.55); } 70%, 100% { box-shadow: 0 0 0 18px rgba(37,211,102,0); } }
+.ghost-btn { display: inline-flex; align-items: center; border: 1.5px solid var(--bone); border-radius: 999px; padding: .8rem 1.3rem; text-decoration: none; font-weight: 600; }
+
+/* hero */
+.hero { position: relative; margin: 0 -16px; padding: clamp(36px, 7vw, 84px) 16px clamp(40px, 6vw, 72px); min-height: clamp(560px, 82svh, 780px); display: flex; align-items: center; overflow: hidden; isolation: isolate; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background: radial-gradient(60% 70% at 78% 45%, rgba(225,6,0,.16), transparent 70%), radial-gradient(40% 50% at 10% 100%, rgba(255,255,255,.05), transparent 70%); }
+#gl { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; opacity: .9; }
+.hero-in { width: 100%; max-width: 1240px; margin: 0 auto; }
+.hero-copy { max-width: 940px; }
+.kicker { font-weight: 600; font-size: .85rem; letter-spacing: .16em; text-transform: uppercase; color: var(--red-hi); margin: 0 0 1rem; }
+h1.kin { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: clamp(3.4rem, 14.5vw, 8.6rem); line-height: .86; letter-spacing: -.005em; margin: 0 0 1.4rem; text-wrap: balance; }
+.kin .ln { display: block; overflow: hidden; padding-bottom: .06em; }
+.kin .ch { display: inline-block; will-change: transform; }
+.kin .out { color: transparent; -webkit-text-stroke: 2px var(--bone); }
+.kin .lime { color: var(--red-hi); }
+.hero p.lead { font-size: clamp(1rem, 2.6vw, 1.2rem); color: #cfcfcf; max-width: 36rem; margin: 0 0 1.6rem; text-wrap: pretty; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 1.8rem 0 0; padding: 0; list-style: none; color: var(--ash); font-size: .9rem; }
+.facts b { color: var(--bone); font-weight: 700; }
+
+/* marquee */
+.mq { margin: 0 -16px; overflow: hidden; padding-block: 16px; }
+.marquee { margin: 0; background: var(--red); color: #fff; overflow: hidden; border-block: 2px solid var(--ink); transform: rotate(-1.2deg) scale(1.03); }
+.marquee-track { display: flex; width: max-content; animation: slide 26s linear infinite; }
+.marquee span { font-family: var(--display); font-weight: 900; font-size: clamp(1.3rem, 4vw, 2rem); text-transform: uppercase; letter-spacing: .04em; padding: .5rem 1.2rem; white-space: nowrap; }
+.marquee i { font-style: normal; opacity: .5; }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+/* section titles */
+section.sec { padding-block: clamp(56px, 9vw, 110px) 0; }
+h2.sweep { font-family: var(--display); font-weight: 900; text-transform: uppercase; line-height: .9; font-size: clamp(2.6rem, 9vw, 5.8rem); margin: 0 0 .5rem; position: relative; color: transparent; -webkit-text-stroke: 1.5px var(--bone); text-wrap: balance; }
+h2.sweep::after { content: attr(data-t); position: absolute; left: 0; top: 0; width: 100%; color: var(--bone); -webkit-text-stroke: 0; clip-path: inset(0 calc(100% - var(--p, 100%)) 0 0); }
+.sec-sub { color: var(--ash); margin: 0 0 2rem; max-width: 34rem; }
+
+/* category doors */
+.doors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.door { position: relative; aspect-ratio: 3 / 4; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--coal); text-align: left; padding: 0; isolation: isolate; transition: border-color .2s; }
+.door img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.door.light img { object-fit: contain; background: var(--panel); padding: 8%; }
+.door::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(10,10,10,.92), rgba(10,10,10,0) 60%); }
+.door:hover img, .door:focus-visible img { transform: scale(1.06); }
+.door:hover { border-color: var(--red-hi); }
+.door-t { position: absolute; left: 12px; right: 12px; bottom: 12px; }
+.door-t b { display: block; font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: clamp(1.2rem, 3.6vw, 2.2rem); line-height: .95; }
+.door-t span { font-size: .8rem; color: var(--red-hi); }
+
+/* shop */
+.tabs { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0 14px; margin-bottom: 8px; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { flex: none; background: transparent; border: 1.5px solid var(--line); border-radius: 999px; padding: .55rem 1.05rem; font-weight: 600; font-size: .92rem; color: var(--bone); transition: background .2s, color .2s, border-color .2s; }
+.tab:hover { border-color: var(--ash); }
+.tab[aria-pressed="true"] { background: var(--red); color: #fff; border-color: var(--red); }
+.tab em { font-style: normal; opacity: .6; margin-left: .35rem; font-weight: 500; }
+.grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 160px), 1fr)); gap: 12px; }
+.card { perspective: 800px; }
+.tilt { position: relative; display: flex; flex-direction: column; height: 100%; background: var(--coal); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; transform-style: preserve-3d; transition: transform .25s ease-out, border-color .2s; will-change: transform; }
+.tilt:hover { border-color: #3d3d3d; }
+.tilt::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at var(--gx, 50%) var(--gy, 0%), rgba(225,6,0,.28), transparent 55%); opacity: var(--go, 0); transition: opacity .25s; }
+.pic { display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0; border: 0; background: var(--panel); position: relative; overflow: hidden; }
+.pic img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+.pic.wb img { object-fit: contain; padding: 6%; }
+.tilt:hover .pic img { transform: scale(1.05) translateZ(0); }
+.tag { position: absolute; left: 8px; top: 8px; background: var(--ink); color: var(--red-hi); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .22rem .5rem; border-radius: 3px; }
+.info { display: flex; flex-direction: column; gap: 4px; padding: 12px 12px 12px; flex: 1; }
+.info h3 { margin: 0; font-size: .95rem; font-weight: 600; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.5em; }
+.info .meta { color: var(--ash); font-size: .8rem; }
+.price { font-family: var(--display); font-weight: 800; font-size: 1.15rem; letter-spacing: .02em; color: var(--red-hi); }
+.info .wa-btn { margin-top: auto; width: 100%; padding: .6rem .5rem; font-size: .82rem; }
+
+/* path */
+.path { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; counter-reset: s; }
+.step { border: 1px solid var(--line); border-radius: 6px; padding: 20px 18px; background: var(--coal); position: relative; }
+.step::before { counter-increment: s; content: counter(s); font-family: var(--display); font-weight: 900; font-size: 3.4rem; line-height: 1; color: var(--red-hi); display: block; margin-bottom: .6rem; }
+.step h3 { margin: 0 0 .3rem; font-size: 1.1rem; }
+.step p { margin: 0; color: var(--ash); font-size: .95rem; }
+
+/* footer */
+footer { margin-top: clamp(64px, 10vw, 120px); border-top: 1px solid var(--line); padding-block: 40px calc(40px + env(safe-area-inset-bottom, 0px)); }
+.foot { display: flex; flex-wrap: wrap; gap: 28px 48px; justify-content: space-between; align-items: flex-end; }
+.foot h2 { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: clamp(2rem, 7vw, 4rem); line-height: .92; margin: 0 0 1rem; }
+.foot-logo { height: 84px; margin-bottom: 18px; }
+.num { font-size: 1.15rem; font-weight: 600; user-select: all; }
+.fine { color: var(--ash); font-size: .82rem; max-width: 28rem; }
+
+/* modal */
+.modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: flex-end; justify-content: center; padding: 0; background: rgba(0,0,0,.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.sheet { width: 100%; max-width: 860px; max-height: 94svh; overflow: auto; background: var(--coal); border: 1px solid var(--line); border-radius: 14px 14px 0 0; display: grid; grid-template-columns: 1fr; position: relative; }
+.sheet-pic { background: var(--panel); aspect-ratio: 1 / 1; max-height: 46svh; width: 100%; }
+.sheet-pic img { width: 100%; height: 100%; object-fit: contain; }
+.sheet-pic.cover img { object-fit: cover; }
+.sheet-body { padding: 20px 20px calc(24px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 10px; }
+.sheet-body h3 { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: 2.1rem; line-height: .95; margin: 0; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 10px; }
+.opt { min-width: 52px; min-height: 44px; padding: .4rem .9rem; border-radius: 6px; background: transparent; border: 1.5px solid var(--line); font-weight: 700; }
+.opt[aria-pressed="true"] { background: var(--bone); color: var(--ink); border-color: var(--bone); }
+.x { position: absolute; right: 10px; top: 10px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--ink); color: var(--bone); font-size: 1.4rem; line-height: 1; z-index: 2; }
+.lbl { font-size: .8rem; color: var(--ash); letter-spacing: .1em; text-transform: uppercase; margin: 8px 0 0; }
+
+@media (min-width: 760px) {
+  .modal { align-items: center; padding: 24px; }
+  .sheet { grid-template-columns: 1fr 1fr; border-radius: 12px; }
+  .sheet-pic { aspect-ratio: auto; max-height: none; min-height: 460px; }
+  .sheet-body { justify-content: center; padding: 32px; }
+}
+@media (max-width: 640px) {
+  .doors { gap: 8px; }
+  .door-t { left: 8px; right: 8px; bottom: 8px; }
+  .path { grid-template-columns: 1fr; }
+  .step { display: grid; grid-template-columns: auto 1fr; gap: 0 16px; align-items: center; padding: 14px 16px; }
+  .step::before { grid-row: span 2; margin: 0; font-size: 2.6rem; }
+  .kin .out { -webkit-text-stroke-width: 1.5px; }
+  .brand { display: flex; align-items: center; gap: 10px; }
+.logo { height: 38px; width: auto; border-radius: 3px; background: #fff; flex: none; }
+.brand small { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track, .wa-btn.pulse { animation: none; }
+  .tilt, .pic img, .door img { transition: none; }
+}
+</style>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top"><img class="logo" src="logo.jpg" alt="BJ Gym Store logo" width="64" height="42"><span>Baba James<small>Sports &amp; Gym Store</small></span></a>
+    <a class="wa-btn sm" data-wa="Hi Baba James, I saw your store online and I have a question." href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.3.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.8-.1 1.4Z"/></svg>Chat</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Baba James Sports and Gym Store">
+    <canvas id="gl" aria-hidden="true"></canvas>
+    <div class="hero-in">
+      <div class="hero-copy">
+        <p class="kicker">Gym equipment &middot; Sportswear &middot; Football boots</p>
+        <h1 class="kin" aria-label="Train hard. Look sharp.">
+          <span class="ln" data-split>Train hard.</span>
+          <span class="ln out" data-split>Look sharp.</span>
+        </h1>
+        <p class="lead">Baba James Sports and Gym Store. Pick what you want, tap once, and the order opens in WhatsApp with your size already filled in.</p>
+        <div class="hero-cta">
+          <a class="wa-btn pulse" data-wa="Hi Baba James, I saw your store online and I want to place an order." href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.3.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.8-.1 1.4Z"/></svg>Order on WhatsApp</a>
+          <a class="ghost-btn" href="#shop">Browse the store</a>
+        </div>
+        <ul class="facts" id="facts"></ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="mq"><div class="marquee" aria-hidden="true"><div class="marquee-track" id="marq"></div></div></div>
+
+  <section class="sec wrap" aria-labelledby="t-cat">
+    <h2 class="sweep" id="t-cat" data-t="Start here">Start here</h2>
+    <p class="sec-sub">Three aisles. Tap one to jump straight to it.</p>
+    <div class="doors" id="doors"></div>
+  </section>
+
+  <section class="sec wrap" id="shop" aria-labelledby="t-shop">
+    <h2 class="sweep" id="t-shop" data-t="The store">The store</h2>
+    <p class="sec-sub">Tap a photo for sizes. Tap the green button to order straight away.</p>
+    <div class="tabs" id="tabs" role="group" aria-label="Filter products"></div>
+    <ul class="grid" id="grid"></ul>
+  </section>
+
+  <section class="sec wrap" aria-labelledby="t-path">
+    <h2 class="sweep" id="t-path" data-t="Seen it on TikTok?">Seen it on TikTok?</h2>
+    <p class="sec-sub">Three taps from video to order.</p>
+    <div class="path">
+      <div class="step"><h3>Watch the video</h3><p>Spot the gear you want on the Baba James TikTok.</p></div>
+      <div class="step"><h3>Open this store</h3><p>The link in the bio brings you here, with every item in one place.</p></div>
+      <div class="step"><h3>Order on WhatsApp</h3><p>Choose your size, tap order, and the chat opens with your item filled in.</p></div>
+    </div>
+    <p id="tt" hidden style="margin-top:1.4rem"><a class="ghost-btn" id="ttlink" href="#" target="_blank" rel="noopener">Follow on TikTok</a></p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <img class="logo foot-logo" src="logo.jpg" alt="BJ Gym Store logo" width="190" height="125"><h2>Ready when<br>you are.</h2>
+      <a class="wa-btn" data-wa="Hi Baba James, I saw your store online and I want to place an order." href="#" target="_blank" rel="noopener">Order on WhatsApp</a>
+    </div>
+    <div>
+      <p class="lbl">WhatsApp</p>
+      <p class="num" id="num"></p>
+      <p class="fine">Preview store built by Stefan Web Dev. Some photos are samples and prices are shared on WhatsApp until the final store goes live.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="modal" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="m-name" id="sheet">
+    <button class="x" id="mx" aria-label="Close">&times;</button>
+    <div class="sheet-pic" id="m-pic"><img id="m-img" alt=""></div>
+    <div class="sheet-body">
+      <p class="lbl" id="m-cat"></p>
+      <h3 id="m-name"></h3>
+      <p class="meta" id="m-col" style="margin:0;color:var(--ash)"></p>
+      <p class="price" id="m-price"></p>
+      <p class="lbl" id="m-optlbl"></p>
+      <div class="opts" id="m-opts" role="group"></div>
+      <a class="wa-btn" id="m-wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.3.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.8-.1 1.4Z"/></svg>Order on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const SITE = {"config": {"brand": "Baba James Sports and Gym Store", "whatsappNumber": "2347030660808", "whatsappDisplay": "+234 703 066 0808", "currency": "₦", "pricePlaceholder": "Ask on WhatsApp", "theme": {"bg": "#0A0A0A", "card": "#141414", "text": "#F5F5F5", "muted": "#9A9A9A", "accent": "#C6FF1A", "whatsapp": "#25D366"}}, "products": [{"id": "sw-01", "name": "Adidas Long-Sleeve Training Top", "category": "Sportswear", "subcategory": "Long Sleeves", "color": "Black", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-01.jpg", "imageStyle": "photo"}, {"id": "sw-02", "name": "Nike Long-Sleeve Training Top", "category": "Sportswear", "subcategory": "Long Sleeves", "color": "White", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-02.jpg", "imageStyle": "photo"}, {"id": "sw-03", "name": "Nike Long-Sleeve Training Top", "category": "Sportswear", "subcategory": "Long Sleeves", "color": "Charcoal", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-03.jpg", "imageStyle": "photo"}, {"id": "sw-04", "name": "Adidas Long-Sleeve Training Top", "category": "Sportswear", "subcategory": "Long Sleeves", "color": "Steel Blue", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-04.jpg", "imageStyle": "photo"}, {"id": "sw-05", "name": "Adidas Long-Sleeve Training Top", "category": "Sportswear", "subcategory": "Long Sleeves", "color": "Navy", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-05.jpg", "imageStyle": "photo"}, {"id": "sw-06", "name": "Nike Training Shorts", "category": "Sportswear", "subcategory": "Shorts", "color": "Dark Grey", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-06.jpg", "imageStyle": "photo"}, {"id": "sw-07", "name": "Adidas 3-Stripe Training Shorts", "category": "Sportswear", "subcategory": "Shorts", "color": "Black", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-07.jpg", "imageStyle": "photo"}, {"id": "sw-08", "name": "Nike Breathe Training Shorts", "category": "Sportswear", "subcategory": "Shorts", "color": "Charcoal", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-08.jpg", "imageStyle": "photo"}, {"id": "sw-09", "name": "Nike Zip-Pocket Training Shorts", "category": "Sportswear", "subcategory": "Shorts", "color": "Slate Grey", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-09.jpg", "imageStyle": "photo"}, {"id": "sw-10", "name": "Nike Training Shorts", "category": "Sportswear", "subcategory": "Shorts", "color": "Light Grey", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-10.jpg", "imageStyle": "photo"}, {"id": "sw-11", "name": "Adidas Techfit Shorts", "category": "Sportswear", "subcategory": "Shorts", "color": "Grey", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-11.jpg", "imageStyle": "photo"}, {"id": "sw-12", "name": "Nike Performance Tee", "category": "Sportswear", "subcategory": "T-Shirts", "color": "Navy", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-12.jpg", "imageStyle": "photo"}, {"id": "sw-13", "name": "Nike Performance Tee", "category": "Sportswear", "subcategory": "T-Shirts", "color": "Charcoal", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-13.jpg", "imageStyle": "photo"}, {"id": "sw-14", "name": "Adidas Essentials Tee", "category": "Sportswear", "subcategory": "T-Shirts", "color": "Grey", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-14.jpg", "imageStyle": "photo"}, {"id": "sw-15", "name": "Under Armour Camo Tee", "category": "Sportswear", "subcategory": "T-Shirts", "color": "Grey Camo", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-15.jpg", "imageStyle": "photo"}, {"id": "sw-16", "name": "Adidas Training Tee", "category": "Sportswear", "subcategory": "T-Shirts", "color": "Light Grey", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-16.jpg", "imageStyle": "photo"}, {"id": "sw-17", "name": "Nike Performance Tee", "category": "Sportswear", "subcategory": "T-Shirts", "color": "Grey", "price": null, "sizes": ["L", "XL", "2XL"], "image": "/products/sportswear-17.jpg", "imageStyle": "photo"}, {"id": "gym-18", "name": "Rubber Hex Dumbbell Set (4kg - 10kg)", "category": "Gym Equipment", "subcategory": "Dumbbells", "color": "Black", "price": null, "sizes": ["4kg", "5kg", "7.5kg", "10kg"], "image": "/products/gym-18.jpg", "imageStyle": "whitebg"}, {"id": "gym-19", "name": "Rubber Hex Dumbbell", "category": "Gym Equipment", "subcategory": "Dumbbells", "color": "Black", "price": null, "sizes": ["5kg", "10kg", "20kg"], "image": "/products/gym-19.jpg", "imageStyle": "whitebg"}, {"id": "gym-20", "name": "Hex Dumbbell Pair", "category": "Gym Equipment", "subcategory": "Dumbbells", "color": "Black", "price": null, "sizes": ["5kg", "10kg", "15kg"], "image": "/products/gym-20.jpg", "imageStyle": "whitebg"}, {"id": "gym-21", "name": "Speckled Nike Dumbbell Pair", "category": "Gym Equipment", "subcategory": "Dumbbells", "color": "Cream Speckle", "price": null, "sizes": ["5kg", "10kg"], "image": "/products/gym-21.jpg", "imageStyle": "photo"}, {"id": "gym-22", "name": "Atlantis Power Bench Rack", "category": "Gym Equipment", "subcategory": "Benches", "color": "Black / Red", "price": null, "sizes": [], "image": "/products/gym-22.jpg", "imageStyle": "whitebg"}, {"id": "gym-23", "name": "Flat Gym Bench", "category": "Gym Equipment", "subcategory": "Benches", "color": "Black", "price": null, "sizes": [], "image": "/products/gym-23.jpg", "imageStyle": "whitebg"}, {"id": "boots-01", "name": "Premier FSO Football Boots", "category": "Football Boots", "subcategory": "Football Boots", "color": "White / Neon Red", "price": null, "sizes": ["40", "41", "42", "43", "44", "45"], "image": "/products/boots-01.jpg", "imageStyle": "whitebg"}, {"id": "boots-02", "name": "Adidas Predator Football Boots", "category": "Football Boots", "subcategory": "Football Boots", "color": "White / Pink", "price": null, "sizes": ["40", "41", "42", "43", "44", "45"], "image": "/products/boots-02.jpg", "imageStyle": "whitebg"}, {"id": "boots-03", "name": "Fire Orange Football Boots", "category": "Football Boots", "subcategory": "Football Boots", "color": "Orange / White", "price": null, "sizes": ["40", "41", "42", "43", "44", "45"], "image": "/products/boots-03.jpg", "imageStyle": "whitebg"}, {"id": "boots-04", "name": "Joma Champion Football Boots", "category": "Football Boots", "subcategory": "Football Boots", "color": "Black / Green", "price": null, "sizes": ["40", "41", "42", "43", "44", "45"], "image": "/products/boots-04.jpg", "imageStyle": "whitebg"}, {"id": "boots-05", "name": "Adidas Predator Freak Football Boots", "category": "Football Boots", "subcategory": "Football Boots", "color": "Black / Pink", "price": null, "sizes": ["40", "41", "42", "43", "44", "45"], "image": "/products/boots-05.jpg", "imageStyle": "photo"}]};
+const TIKTOK_URL = ""; // paste his TikTok link here when you have it
+const CFG = SITE.config, PRODUCTS = SITE.products;
+const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const HAS_GSAP = !!window.gsap;
+const $ = (s, r = document) => r.querySelector(s);
+const WA = (text) => "https://wa.me/" + CFG.whatsappNumber + "?text=" + encodeURIComponent(text);
+const priceText = (p) => p.price ? CFG.currency + Number(p.price).toLocaleString("en-NG") : CFG.pricePlaceholder;
+const isWeight = (p) => p.category === "Gym Equipment";
+const waIcon = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.3.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.8-.1 1.4Z"/></svg>';
+function msg(p, opt) {
+  let t = "Hi Baba James, I'm interested in the " + p.name + " (" + p.color + ")";
+  if (opt) t += isWeight(p) ? ", " + opt : " in size " + opt;
+  return t + ". Is it available?";
+}
+const img = (p) => p.image.replace(/^\//, "");
+
+/* static wiring */
+document.querySelectorAll("[data-wa]").forEach(a => a.href = WA(a.dataset.wa));
+$("#num").textContent = CFG.whatsappDisplay;
+if (TIKTOK_URL) { $("#tt").hidden = false; $("#ttlink").href = TIKTOK_URL; }
+const cats = ["Sportswear", "Gym Equipment", "Football Boots"];
+$("#facts").innerHTML = "<li><b>" + PRODUCTS.length + "</b> items listed</li><li>Sizes <b>L to 2XL</b></li><li>Boots <b>40 to 45</b></li>";
+const mq = ["Gym equipment", "Sportswear", "Football boots", "Order on WhatsApp"];
+const mqHtml = mq.map(t => "<span>" + t + "</span><span><i>&#9679;</i></span>").join("");
+$("#marq").innerHTML = mqHtml.repeat(4);
+
+/* category doors */
+const doorImg = { "Sportswear": "sw-03", "Gym Equipment": "gym-18", "Football Boots": "boots-03" };
+$("#doors").innerHTML = cats.map(c => {
+  const p = PRODUCTS.find(x => x.id === doorImg[c]);
+  const n = PRODUCTS.filter(x => x.category === c).length;
+  return '<button class="door' + (p.imageStyle === "whitebg" ? " light" : "") + '" data-cat="' + c + '"><img src="' + img(p) + '" alt="" loading="lazy"><span class="door-t"><b>' + c + "</b><span>" + n + " items</span></span></button>";
+}).join("");
+
+/* tabs */
+const tabDefs = [["All", () => true]].concat(
+  ["Long Sleeves", "Shorts", "T-Shirts"].map(s => [s, p => p.subcategory === s]),
+  [["Dumbbells", p => p.subcategory === "Dumbbells"], ["Benches", p => p.subcategory === "Benches"], ["Football Boots", p => p.category === "Football Boots"]]
+);
+$("#tabs").innerHTML = tabDefs.map((t, i) => '<button class="tab" data-i="' + i + '" aria-pressed="' + (i === 0) + '">' + t[0] + "<em>" + PRODUCTS.filter(t[1]).length + "</em></button>").join("");
+
+/* grid */
+const grid = $("#grid");
+grid.innerHTML = PRODUCTS.map(p => {
+  const wb = p.imageStyle === "whitebg";
+  const sub = p.sizes && p.sizes.length ? (isWeight(p) ? p.sizes.join(" / ") : p.sizes[0] + " to " + p.sizes[p.sizes.length - 1]) : p.color;
+  return '<li class="card" data-id="' + p.id + '"><div class="tilt">' +
+    '<button class="pic' + (wb ? " wb" : "") + '" data-open="' + p.id + '" aria-label="View ' + p.name + '"><img src="' + img(p) + '" alt="' + p.name + ", " + p.color + '" loading="lazy" width="400" height="500"></button>' +
+    '<div class="info"><h3>' + p.name + '</h3><span class="meta">' + p.color + " &middot; " + sub + '</span><span class="price">' + priceText(p) + "</span>" +
+    '<a class="wa-btn" href="' + WA(msg(p)) + '" target="_blank" rel="noopener">' + waIcon + "Order</a></div></div></li>";
+}).join("");
+const cards = [...grid.children];
+
+function applyFilter(i, animate) {
+  const f = tabDefs[i][1];
+  document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.i === i)));
+  const doFlip = animate && HAS_GSAP && window.Flip && !REDUCED;
+  const state = doFlip ? Flip.getState(cards) : null;
+  cards.forEach(c => { c.hidden = !f(PRODUCTS.find(p => p.id === c.dataset.id)); });
+  if (doFlip) {
+    Flip.from(state, { duration: .55, ease: "power2.out", absolute: true, stagger: .012,
+      onEnter: els => gsap.fromTo(els, { opacity: 0, scale: .85 }, { opacity: 1, scale: 1, duration: .4 }) });
+  }
+  if (window.ScrollTrigger) ScrollTrigger.refresh();
+}
+$("#tabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if (b) applyFilter(+b.dataset.i, true); });
+$("#doors").addEventListener("click", e => {
+  const d = e.target.closest(".door"); if (!d) return;
+  const idx = d.dataset.cat === "Football Boots" ? 6 : d.dataset.cat === "Gym Equipment" ? 4 : 1;
+  applyFilter(d.dataset.cat === "Sportswear" ? 0 : idx, false);
+  $("#shop").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" });
+});
+
+/* modal */
+const modal = $("#modal"); let lastFocus = null, current = null, chosen = null;
+function setOpt(o) {
+  chosen = o;
+  document.querySelectorAll(".opt").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.o === o)));
+  $("#m-wa").href = WA(msg(current, o));
+}
+function openModal(id) {
+  const p = PRODUCTS.find(x => x.id === id); current = p; lastFocus = document.activeElement;
+  $("#m-img").src = img(p); $("#m-img").alt = p.name;
+  $("#m-pic").classList.toggle("cover", p.imageStyle === "photo");
+  $("#m-cat").textContent = p.subcategory;
+  $("#m-name").textContent = p.name; $("#m-col").textContent = p.color; $("#m-price").textContent = priceText(p);
+  const has = p.sizes && p.sizes.length;
+  $("#m-optlbl").hidden = $("#m-opts").hidden = !has;
+  $("#m-optlbl").textContent = isWeight(p) ? "Choose weight" : "Choose size";
+  $("#m-opts").innerHTML = has ? p.sizes.map(s => '<button class="opt" data-o="' + s + '" aria-pressed="false">' + s + "</button>").join("") : "";
+  setOpt(has ? p.sizes[Math.min(1, p.sizes.length - 1)] : null);
+  modal.hidden = false; document.body.style.overflow = "hidden";
+  if (HAS_GSAP && !REDUCED) {
+    gsap.fromTo(modal, { opacity: 0 }, { opacity: 1, duration: .25 });
+    gsap.fromTo("#sheet", { y: 70, scale: .96 }, { y: 0, scale: 1, duration: .45, ease: "power3.out" });
+  }
+  $("#mx").focus();
+}
+function closeModal() {
+  const done = () => { modal.hidden = true; document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); };
+  if (HAS_GSAP && !REDUCED) gsap.to(modal, { opacity: 0, duration: .2, onComplete: done }); else done();
+}
+grid.addEventListener("click", e => { const b = e.target.closest("[data-open]"); if (b) openModal(b.dataset.open); });
+$("#m-opts").addEventListener("click", e => { const b = e.target.closest(".opt"); if (b) setOpt(b.dataset.o); });
+$("#mx").addEventListener("click", closeModal);
+modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !modal.hidden) closeModal(); });
+
+/* 3D tilt (pointer, works with touch drag too) */
+if (!REDUCED) {
+  grid.addEventListener("pointermove", e => {
+    const t = e.target.closest(".tilt"); if (!t) return;
+    const r = t.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    t.style.transition = "transform .08s linear";
+    t.style.transform = "rotateX(" + ((.5 - y) * 12).toFixed(2) + "deg) rotateY(" + ((x - .5) * 14).toFixed(2) + "deg) translateZ(6px)";
+    t.style.setProperty("--gx", (x * 100) + "%"); t.style.setProperty("--gy", (y * 100) + "%"); t.style.setProperty("--go", 1);
+  });
+  const reset = e => { const t = e.target.closest && e.target.closest(".tilt"); if (!t) return; t.style.transition = ""; t.style.transform = ""; t.style.setProperty("--go", 0); };
+  grid.addEventListener("pointerout", e => { const t = e.target.closest(".tilt"); if (t && !t.contains(e.relatedTarget)) reset(e); });
+  grid.addEventListener("pointerup", reset); grid.addEventListener("pointercancel", reset);
+}
+
+/* kinetic headline + scroll motion */
+function splitChars(el) {
+  const txt = el.textContent; el.textContent = "";
+  txt.split(" ").forEach((w, wi, arr) => {
+    const word = document.createElement("span"); word.style.display = "inline-block"; word.style.whiteSpace = "nowrap";
+    [...w].forEach(ch => { const s = document.createElement("span"); s.className = "ch"; s.textContent = ch; word.appendChild(s); });
+    el.appendChild(word); if (wi < arr.length - 1) el.appendChild(document.createTextNode(" "));
+  });
+}
+document.querySelectorAll("[data-split]").forEach(splitChars);
+if (HAS_GSAP && !REDUCED) {
+  gsap.registerPlugin(ScrollTrigger, window.Flip);
+  const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+  tl.from(".kicker", { y: 16, opacity: 0, duration: .5 })
+    .from(".kin .ln:first-child .ch", { yPercent: 115, rotate: 7, duration: .9, stagger: .035 }, "-=.2")
+    .from(".kin .ln.out .ch", { yPercent: 115, rotate: -7, duration: .9, stagger: .035 }, "-=.75")
+    .from(".hero p.lead, .hero-cta, .facts", { y: 22, opacity: 0, duration: .7, stagger: .12 }, "-=.5");
+  document.querySelectorAll("h2.sweep").forEach(h => {
+    gsap.fromTo(h, { "--p": "0%" }, { "--p": "100%", ease: "none", scrollTrigger: { trigger: h, start: "top 88%", end: "top 45%", scrub: .6 } });
+  });
+  gsap.utils.toArray(".card .tilt, .door, .step").forEach(el => {
+    gsap.from(el, { y: 44, scale: .96, duration: .7, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 94%", once: true } });
+  });
+  gsap.to(".marquee", { rotate: 1.2, ease: "none", scrollTrigger: { trigger: ".marquee", start: "top bottom", end: "bottom top", scrub: true } });
+}
+
+/* 3D hero: one hex dumbbell, loaded after first paint */
+function startHero() {
+  const canvas = $("#gl");
+  if (!window.THREE) return;
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "low-power" }); } catch (e) { canvas.style.display = "none"; return; }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(32, 1, .1, 50); camera.position.set(0, 0, 9);
+  scene.add(new THREE.AmbientLight(0xffffff, .55));
+  const key = new THREE.DirectionalLight(0xffffff, 1.2); key.position.set(3, 4, 5); scene.add(key);
+  const rim = new THREE.PointLight(0xff2a1f, 2.6, 22); rim.position.set(-4, 2, -3); scene.add(rim);
+  const fill = new THREE.PointLight(0x8aa0ff, .7, 20); fill.position.set(4, -3, 3); scene.add(fill);
+  const g = new THREE.Group(), rubber = new THREE.MeshStandardMaterial({ color: 0x232323, roughness: .55, metalness: .25 });
+  const steel = new THREE.MeshPhongMaterial({ color: 0xd5d9dc, specular: 0xffffff, shininess: 110 });
+  const limeM = new THREE.MeshStandardMaterial({ color: 0xe10600, emissive: 0xe10600, emissiveIntensity: .55, roughness: .4 });
+  const handle = new THREE.Mesh(new THREE.CylinderGeometry(.17, .17, 2.8, 28), steel); handle.rotation.z = Math.PI / 2; g.add(handle);
+  [-1, 1].forEach(s => {
+    const head = new THREE.Mesh(new THREE.CylinderGeometry(1.05, 1.05, .95, 6), rubber); head.rotation.z = Math.PI / 2; head.position.x = s * 1.35; g.add(head);
+    const ring = new THREE.Mesh(new THREE.CylinderGeometry(1.08, 1.08, .09, 6), limeM); ring.rotation.z = Math.PI / 2; ring.position.x = s * 1.35 + s * .3; g.add(ring);
+    const collar = new THREE.Mesh(new THREE.CylinderGeometry(.26, .26, .3, 24), steel); collar.rotation.z = Math.PI / 2; collar.position.x = s * .95; g.add(collar);
+  });
+  g.rotation.set(.35, -.6, .25); scene.add(g);
+  const m = { x: 0, y: 0, tx: 0, ty: 0 };
+  window.addEventListener("pointermove", e => { m.tx = (e.clientX / innerWidth - .5); m.ty = (e.clientY / innerHeight - .5); }, { passive: true });
+  function fit() {
+    const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return;
+    renderer.setSize(w, h, false); camera.aspect = w / h;
+    const wide = w > 820;
+    g.position.set(wide ? 2.5 : .15, wide ? .1 : 2.05, 0); g.scale.setScalar(wide ? .8 : .36);
+    camera.updateProjectionMatrix();
+  }
+  new ResizeObserver(fit).observe(canvas); fit();
+  let vis = true, last = performance.now(), t = 0;
+  new IntersectionObserver(es => { vis = es[0].isIntersecting; }).observe(canvas);
+  function frame(now) {
+    requestAnimationFrame(frame);
+    if (!vis || document.hidden) { last = now; return; }
+    const dt = Math.min(.05, (now - last) / 1000); last = now; t += dt;
+    m.x += (m.tx - m.x) * .06; m.y += (m.ty - m.y) * .06;
+    g.rotation.y += dt * .55; g.rotation.x = .35 + m.y * .6; g.rotation.z = .25 + m.x * .4;
+    g.position.y += (Math.sin(t * 1.4) * .0015);
+    renderer.render(scene, camera);
+  }
+  if (REDUCED) renderer.render(scene, camera); else requestAnimationFrame(frame);
+}
+if ("requestIdleCallback" in window) requestIdleCallback(startHero, { timeout: 1200 }); else setTimeout(startHero, 200);
+</script>
+
+</body>
+</html>
